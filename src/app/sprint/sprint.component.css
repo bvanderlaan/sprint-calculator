@@ -17,6 +17,11 @@ div.form-horizontal {
   color: #0094FF;
 }
 
+#velocityPerPerson > p {
+  font-size: 1.2em;
+  color: #006BB7;
+}
+
 /* =Media Queries
 -------------------------------------------------------------- */
 

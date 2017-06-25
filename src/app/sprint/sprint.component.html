@@ -66,7 +66,10 @@
     </div>
   </div>
   <div id="capacity" class="row">
-      <p>Your actual capacity is: <strong>{{capacity}}</strong></p>
+      <p>Your actual capacity is: <strong>{{capacity.toPrecision(2)}}</strong></p>
+  </div>
+  <div id="velocityPerPerson" class="row">
+      <p>Your velocity per person is: <strong>{{velocityPerPerson.toPrecision(2)}}</strong></p>
   </div>
   <div class="row" *ngFor="let i of rows">
     <div id="sprint" class="col-xs-2" *ngFor="let day of days | slice:(i*daysPerWeek):(i+1)*daysPerWeek">
