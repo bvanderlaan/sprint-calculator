@@ -1,0 +1,10 @@
+.sprint-day {
+  border: 1px solid #000000;
+  background-color: #FCFCFC;
+  height: 100px;
+  margin: 0 1px 0 0;
+}
+
+.holiday {
+  background-color: #686868;
+}

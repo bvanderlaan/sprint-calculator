@@ -1,0 +1,76 @@
+<div id="intro">
+  <p>Fill in the below form and figure out how much actual capacity you have in the up coming sprint.</p>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="sprintLength" class="control-label col-sm-4">Length of Sprint:</label>
+        <div class="col-sm-8">
+          <input id="sprintLength"
+                 type="number"
+                 class="form-control"
+                 [(ngModel)]="sprintLength"
+                 placeholder="Days"
+                 min="{{minSprintLength}}"
+                 max="{{maxSprintLength}}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="holidays" class="control-label col-sm-4">Number of Holidays:</label>
+        <div class="col-sm-8">
+          <input id="holidays"
+                 type="number"
+                 class="form-control"
+                 [(ngModel)]="holidays"
+                 placeholder="Days"
+                 min="0"
+                 max="{{maxHolidays}}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="teamSize" class="control-label col-sm-4">Size of Team:</label>
+        <div class="col-sm-8">
+          <input id="teamSize"
+                 type="number"
+                 class="form-control"
+                 [(ngModel)]="teamSize"
+                 min="1"
+                 max="100" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="vacationDays" class="control-label col-sm-4">Number of Vacation days:</label>
+        <div class="col-sm-8">
+          <input id="vacationDays"
+                 type="number"
+                 class="form-control"
+                 [(ngModel)]="vacationDays"
+                 placeholder="Days"
+                 min="0"
+                 max="{{maxHolidays}}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="velocity" class="control-label col-sm-4">Velocity:</label>
+        <div class="col-sm-8">
+          <input id="velocity"
+                 type="number"
+                 class="form-control"
+                 [(ngModel)]="velocity"
+                 placeholder="Story Points"
+                 min="0"
+                 max="1000" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="capacity" class="row">
+      <p>Your actual capacity is: <strong>{{capacity}}</strong></p>
+  </div>
+  <div class="row" *ngFor="let i of rows">
+    <div id="sprint" class="col-xs-2" *ngFor="let day of days | slice:(i*daysPerWeek):(i+1)*daysPerWeek">
+      <sprint-day [day]=day></sprint-day>
+    </div>
+  </div>
+</div>

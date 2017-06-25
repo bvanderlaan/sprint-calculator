@@ -1,0 +1,79 @@
+#sprint {
+  padding: 5px 0px 5px 0px;
+}
+
+#intro {
+  margin-bottom: 40px;
+}
+
+div.form-horizontal {
+  margin-left: 0;
+  margin-right: auto;
+  max-width: 600px;
+}
+
+#capacity > p {
+  font-size: 1.5em;
+  color: #0094FF;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+/*
+ * min-width: >=
+ *   min-width: 100px --> 100px and greater (101, 102, ..., 500000)
+ *
+ * max-width: <=
+ *   max-width: 100px --> 100px and smaller (99, 98, ..., 0)
+ */
+
+
+/* =Styles in larger displays will casscade down to smaller displays
+    Styles set in larger displays can be overwritten in smaller display queires.
+-------------------------------------------------------------- */
+
+/* Extra Extra Extra Large Devices ( > 4K, i.e. 8K ) will use default settings, that is 8K displays are not yet propertly supported. */
+
+/* Extra Extra Large Devices, 4K Screens */
+@media only screen and (max-width : 4096px) {}
+
+/* Extra Large Devices, WUXGA Screens */
+@media only screen and (max-width : 1920px) {}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {}
+
+
+/* =Styles in smaller displays will casscade down to larger displays
+    Styles set in smaller displays can be overwritten in larger display queires.
+    The below styles will override the above media queires.
+-------------------------------------------------------------- */
+
+/* Small Devices (Tablets) and up */
+@media only screen and (min-width : 768px) {}
+
+/* Medium Devices (Desktops) and up */
+@media only screen and (min-width : 992px) {
+  div.form-horizontal {
+    margin-left: 10%;
+  }
+}
+
+/* Large Displays (Wide Screens) and up */
+@media only screen and (min-width : 1200px) {}
+
+/* Extra Large Devices (WUXGA Screens) and up */
+@media only screen and (min-width : 1920px) {}
