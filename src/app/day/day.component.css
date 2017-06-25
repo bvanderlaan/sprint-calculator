@@ -5,6 +5,15 @@
   margin: 0 1px 0 0;
 }
 
+.sprint-day > p {
+  padding-left: 4px;
+  padding-top: 4px;
+}
+
 .holiday {
   background-color: #686868;
+}
+
+.holiday > p {
+  color: #D3D3D3;
 }
