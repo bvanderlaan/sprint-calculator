@@ -119,6 +119,10 @@ export class SprintComponent implements OnInit {
     return this.velocityValue / this.sizeOfTeam;
   }
 
+  get velocityPerPersonPerDay() {
+    return (this.velocityValue / this.sizeOfTeam) / this.days.length;
+  }
+
   calculateCapacity() {
     const idealManDays = (this.days.length * this.sizeOfTeam);
     const actualManDays = ((this.days.length - this.numOfHolidays) * this.sizeOfTeam) - this.numOfVacationDays;

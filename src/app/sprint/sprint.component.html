@@ -71,6 +71,9 @@
   <div id="velocityPerPerson" class="row">
       <p>Your velocity per person is: <strong>{{velocityPerPerson.toPrecision(2)}}</strong></p>
   </div>
+  <div id="velocityPerPersonPerDay" class="row">
+      <p>Your velocity per person per day is: <strong>{{velocityPerPersonPerDay.toPrecision(2)}}</strong></p>
+  </div>
   <div class="row" *ngFor="let i of rows">
     <div id="sprint" class="col-xs-2" *ngFor="let day of days | slice:(i*daysPerWeek):(i+1)*daysPerWeek">
       <sprint-day [day]=day></sprint-day>
