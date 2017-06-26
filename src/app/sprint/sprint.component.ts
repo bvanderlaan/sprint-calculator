@@ -42,7 +42,7 @@ export class SprintComponent implements OnInit {
 
       this.rows = Array.from(new Array(Math.ceil(this.days.length / this.daysPerWeek)).keys());
 
-      this.calculateCapacity();
+      this.update();
     }
   }
 
@@ -53,18 +53,9 @@ export class SprintComponent implements OnInit {
   set holidays(value: string) {
     const num = parseInt(value);
 
-    if ((this.numOfHolidays != num) && (num <= parseInt(this.maxHolidays))) {
+    if ((num >= 0) && (this.numOfHolidays != num) && (num <= parseInt(this.maxHolidays))) {
       this.numOfHolidays = num;
-
-      if (this.numOfHolidays > 0) {
-        let num = this.numOfHolidays;
-        while (num) {
-          this.days[this.days.length - num].holiday = true;
-          num -=1;
-        }
-      }
-
-      this.calculateCapacity();
+      this.update();
     }
   }
 
@@ -83,9 +74,9 @@ export class SprintComponent implements OnInit {
   set teamSize(value: string) {
     const num = parseInt(value);
 
-    if ((num > 1) && (this.sizeOfTeam != num)) {
+    if ((num > 0) && (this.sizeOfTeam != num)) {
       this.sizeOfTeam = num;
-      this.calculateCapacity();
+      this.update();
     }
   }
 
@@ -96,9 +87,9 @@ export class SprintComponent implements OnInit {
   set vacationDays(value: string) {
     const num = parseInt(value);
 
-    if ((num > 1) && (this.numOfVacationDays != num)) {
+    if ((num >= 0) && (this.numOfVacationDays != num) && (num <= (this.days.length * this.sizeOfTeam))) {
       this.numOfVacationDays = num;
-      this.calculateCapacity();
+      this.update();
     }
   }
 
@@ -111,7 +102,7 @@ export class SprintComponent implements OnInit {
 
     if ((num >= 0) && (this.velocityValue != num)) {
       this.velocityValue = num;
-      this.calculateCapacity();
+      this.update();
     }
   }
 
@@ -123,6 +114,11 @@ export class SprintComponent implements OnInit {
     return (this.velocityValue / this.sizeOfTeam) / this.days.length;
   }
 
+  update() {
+    this.calculateCapacity();
+    this.renderDays();
+  }
+
   calculateCapacity() {
     const idealManDays = (this.days.length * this.sizeOfTeam);
     const actualManDays = ((this.days.length - this.numOfHolidays) * this.sizeOfTeam) - this.numOfVacationDays;
@@ -130,6 +126,33 @@ export class SprintComponent implements OnInit {
     const velocityPerPersonPerDay = velocityPerPerson / this.days.length;
 
     this.capacity = actualManDays * velocityPerPersonPerDay;
+  }
+
+  renderDays() {
+    let holidays = this.numOfHolidays;
+    let vacations = this.numOfVacationDays / this.sizeOfTeam;
+
+    const days = Array.prototype.concat([], this.days).reverse();
+    days.forEach((day) => {
+      day.holiday = false;
+      day.vacation = false;
+
+      if (holidays > 0) {
+        day.holiday = true;
+        holidays -=1;
+      } else if (vacations > 0) {
+        day.vacation = true;
+        vacations -= 1;
+      }
+    });
+
+    if (this.numOfHolidays > 0) {
+      let num = this.numOfHolidays;
+      while (num) {
+        this.days[this.days.length - num].holiday = true;
+        num -=1;
+      }
+    }
   }
 
   ngOnInit() {
