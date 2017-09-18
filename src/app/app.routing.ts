@@ -8,6 +8,10 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'dark',
+    component: HomeComponent,
+  },
+  {
     path: '**',
     redirectTo: '',
   }
